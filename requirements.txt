@@ -1,3 +1,9 @@
 langchain
-langchain-cummunity
+langchain-community
+langchain_huggingface
 python-dotenv
+langchain_groq
+pandas
+faiss-cpu
+pypdf
+unstructured
