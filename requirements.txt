@@ -7,3 +7,8 @@ pandas
 faiss-cpu
 pypdf
 unstructured
+python-multipart
+fastapi
+pydantic
+uvicorn[standard]
+jinja2

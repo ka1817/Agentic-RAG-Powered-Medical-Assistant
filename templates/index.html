@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Medical Assistant</title>
+  <link rel="stylesheet" href="/static/css/style.css">
+</head>
+<body>
+  <div class="container">
+    <h1>🧠 Medical Assistant</h1>
+    <form method="post">
+      <input type="text" name="question" placeholder="Ask a medical question..." required>
+      <button type="submit">Ask</button>
+    </form>
+    {% if response %}
+    <div class="response">
+      <h3>💬 Answer:</h3>
+      <p>{{ response }}</p>
+    </div>
+    {% endif %}
+  </div>
+</body>
+</html>
