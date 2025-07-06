@@ -55,6 +55,7 @@ def get_agent():
         tools=tools,
         llm=llm,
         agent=AgentType.ZERO_SHOT_REACT_DESCRIPTION,
+        handle_parsing_errors=True,
         verbose=False
     )
 
