@@ -68,41 +68,40 @@ This project presents an **Agentic RAG (Retrieval-Augmented Generation) Medical 
 | 🌐 FastAPI Frontend       | Ask questions via a clean web UI powered by Jinja2                        |
 
 ---
+
 # 🏗️ System Architecture
-scss
-Copy
-Edit
 
-            ┌────────────────────────────┐
-            │     Medical PDF Corpus     │
-            │   (WHO + Oncology docs)    │
-            └────────────┬───────────────┘
-                         │
-        ┌────────────────▼────────────────┐
-        │   Data Ingestion & Chunking     │
-        │ (Unstructured Loader + Splitter)│
-        └────────────────┬────────────────┘
-                         │
-              ┌──────────▼────────────┐
-              │ Vector Embeddings     │
-              │ (HuggingFace + FAISS) │
-              └──────────┬────────────┘
-                         │
-        ┌────────────────▼─────────────────┐
-        │   LangChain Tools & Agent        │
-        │ (Tool1: WHO | Tool2: Oncology)   │
-        └────────────────┬─────────────────┘
-                         │
-              ┌──────────▼────────────┐
-              │ Groq-hosted LLaMA3    │
-              │ Agent Reasoning Logic │
-              └──────────┬────────────┘
-                         │
-                ┌────────▼────────┐
-                │ FastAPI + HTML  │
-                │ User Interface  │
-                └─────────────────┘
-
+```
+        ┌────────────────────────────┐
+        │     Medical PDF Corpus     │
+        │   (WHO + Oncology docs)    │
+        └────────────┬───────────────┘
+                     │
+    ┌────────────────▼────────────────┐
+    │   Data Ingestion & Chunking     │
+    │ (Unstructured Loader + Splitter)│
+    └────────────────┬────────────────┘
+                     │
+          ┌──────────▼────────────┐
+          │ Vector Embeddings     │
+          │ (HuggingFace + FAISS) │
+          └──────────┬────────────┘
+                     │
+    ┌────────────────▼─────────────────┐
+    │   LangChain Tools & Agent        │
+    │ (Tool1: WHO | Tool2: Oncology)   │
+    └────────────────┬─────────────────┘
+                     │
+          ┌──────────▼────────────┐
+          │ Groq-hosted LLaMA3    │
+          │ Agent Reasoning Logic │
+          └──────────┬────────────┘
+                     │
+            ┌────────▼────────┐
+            │ FastAPI + HTML  │
+            │ User Interface  │
+            └─────────────────┘
+```
 
 ## 🧪 Example Queries
 
@@ -203,23 +202,53 @@ pytest tests/
 
 ---
 
-## 🌟 Contributing
+## ☁️ AWS Deployment (Dockerized from Docker Hub)
 
-1. Fork the repo
-2. Create your feature branch (`git checkout -b feature/my-feature`)
-3. Commit your changes
-4. Push to the branch
-5. Open a Pull Request 🚀
+The app is production-deployed using **AWS EC2** and Docker, leveraging a **prebuilt image from Docker Hub**.
 
----
+### 🚀 Deployment Steps
 
-## 👨‍🔬 Future Enhancements
+1. **Launch an EC2 Instance**
 
-* ✅ Add support for additional medical sources (e.g., UpToDate, NCCN)
-* 📈 Implement document summarization for long texts
-* 🧪 Integrate semantic evaluation for LLM answers
-* 🔍 Streamlit / Gradio interface for chat-like UX
-* 📱 Deploy via Hugging Face Spaces or AWS SageMaker
+   * Use Ubuntu (20.04 or later)
+   * Open ports:
+
+     * `22` (SSH)
+     * `8000` (FastAPI app)
+
+2. **SSH into EC2**
+
+   ```bash
+   ssh -i your-key.pem ubuntu@<your-ec2-public-ip>
+   ```
+
+3. **Install Docker**
+
+   ```bash
+   sudo apt update
+   sudo apt install -y docker.io
+   sudo usermod -aG docker $USER
+   newgrp docker
+   ```
+
+4. **Create a `.env` File with GROQ API Key**
+
+   ```bash
+   echo "GROQ_API_KEY=your_groq_api_key" > .env
+   ```
+
+5. **Pull and Run the Docker Image**
+
+   ```bash
+   docker pull pranavreddy123/agentic-medical-assistant
+   docker run -d -p 8000:8000 --env-file .env pranavreddy123/agentic-medical-assistant
+   ```
+
+6. **Access the App**
+
+   ```
+   http://<your-ec2-public-ip>:8000
+   ```
 
 ---
 
@@ -237,4 +266,3 @@ MIT License © 2025 Pranav Reddy
 
 ---
 
-Let me know if you want the same README rendered as an actual Canva design layout (PDF or image)!
