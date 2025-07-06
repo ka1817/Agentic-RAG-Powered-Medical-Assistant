@@ -12,6 +12,11 @@ fastapi
 pydantic
 uvicorn[standard]
 unstructured[pdf]
+
+unstructured
+unstructured-inference
+opencv-python-headless  # Needed for unstructured PDF parsing
+
 sentence-transformers
 jinja2
 pytest
