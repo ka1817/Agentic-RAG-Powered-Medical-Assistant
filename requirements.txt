@@ -11,5 +11,6 @@ python-multipart
 fastapi
 pydantic
 uvicorn[standard]
+sentence-transformers
 jinja2
 pytest
