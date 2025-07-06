@@ -1,0 +1,48 @@
+venv/
+__pycache__/
+README.md
+.pytest_cache/
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Virtual environments
+venv/
+.env
+
+# Environment files
+*.env
+
+# macOS / Linux / Windows system files
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
+
+# Git
+.git/
+.gitignore
+
+# Docker
+Dockerfile
+.dockerignore
+
+# Python test caches
+.pytest_cache/
+tests/__pycache__/
+coverage/
+
+# Notebooks (if any)
+*.ipynb
+
+# VS Code
+.vscode/
+
+
+# Vectorstores (optional — unless you want them in the container)
+vectorstores/
+
+# Others
+*.sqlite3
