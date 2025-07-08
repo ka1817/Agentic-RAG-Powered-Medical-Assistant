@@ -1,4 +1,4 @@
-name: Agentic RAG CI/CD Pipeline
+name: Agentic RAG Powered Medical-Assistent CI/CD Pipeline
 
 on:
   push:
